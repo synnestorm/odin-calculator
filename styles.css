@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "CursedTimer";
+  src: url(fonts/CursedTimerUlil-Aznm.ttf);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -20,6 +25,15 @@ main {
   justify-content: center;
 }
 
+.display-sum {
+  font-family: "CursedTimer";
+  color: white;
+  font-size: 70px;
+  text-align: center;
+  padding-top: 20px;
+  margin: 20px auto;
+}
+
 .calc-container {
   width: 400px;
   height: 500px;
@@ -28,4 +42,16 @@ main {
     rgba(0, 0, 0, 0.19) 0px 10px 20px,
     rgba(0, 0, 0, 0.23) 0px 6px 6px;
   border-radius: 30px;
+}
+
+.calc-display {
+  width: 350px;
+  height: 100px;
+  background-color: rgb(53, 45, 109);
+  border-radius: 30px;
+  margin: 0px auto 40px auto;
+  box-shadow:
+    0 2px 10px rgba(20, 16, 55, 0.2),
+    inset 0 3px 6px rgba(90, 80, 150, 0.12),
+    inset 0 -5px 10px rgba(25, 20, 60, 0.2);
 }
