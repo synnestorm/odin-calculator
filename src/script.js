@@ -29,7 +29,12 @@ operatorBtns.forEach((button) => {
 
 const equalBtn = document.querySelector(".equal");
 equalBtn.addEventListener("click", function () {
-  total = currentNumber + Number(display.textContent);
+  if (operator === "+") {
+    total = currentNumber + Number(display.textContent);
+    console.log(total);
+  } else if (operator === "-") {
+    total = currentNumber - Number(display.textContent);
+  }
 });
 
 // clear button
