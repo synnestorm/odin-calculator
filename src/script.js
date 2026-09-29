@@ -8,11 +8,16 @@ calcDisplay.appendChild(display);
 let currentNumber = 0;
 let total = 0;
 let operator = "";
+let calcDone = false;
 
 // number buttons
 const numberBtns = document.querySelectorAll(".number");
 numberBtns.forEach((button) => {
   button.addEventListener("click", function () {
+    if (calcDone) {
+      display.textContent = "";
+      calcDone = false;
+    }
     display.textContent += button.textContent;
   });
 });
@@ -31,23 +36,30 @@ const equalBtn = document.querySelector(".equal");
 equalBtn.addEventListener("click", function () {
   if (operator === "+") {
     total = currentNumber + Number(display.textContent);
+    display.textContent = total;
   } else if (operator === "-") {
     total = currentNumber - Number(display.textContent);
-  } else if (operator === "*") {
+    display.textContent = total;
+  } else if (operator === "×") {
     total = currentNumber * Number(display.textContent);
-  } else if (operator === "/") {
+    display.textContent = total;
+  } else if (operator === "÷") {
     total = currentNumber / Number(display.textContent);
+    display.textContent = total;
   } else {
     display.textContent = "error";
+    display.style.fontFamily = "Black Ops One";
   }
+  calcDone = true;
 });
 
 // clear button
-const clearBtn = document.querySelector(".clear");
-clearBtn.addEventListener("click", function () {
-  display.textContent = "";
+const clearBtn = document.querySelectorAll(".clear");
+clearBtn.forEach((button) => {
+  button.addEventListener("click", function () {
+    display.textContent = "";
+  });
 });
-
 // functions for the operators in order: add, subtract, multiply, divide
 
 // im also thinking that, when the button is clicked it should store a value in a variable
