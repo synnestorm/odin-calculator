@@ -7,6 +7,7 @@ calcDisplay.appendChild(display);
 // const displayValue = Number(display.textContent);
 let currentNumber = 0;
 let total = 0;
+let operator = "";
 
 // number buttons
 const numberBtns = document.querySelectorAll(".number");
@@ -22,13 +23,13 @@ operatorBtns.forEach((button) => {
   button.addEventListener("click", function () {
     currentNumber = Number(display.textContent);
     display.textContent = "";
+    operator = button.textContent;
   });
 });
 
 const equalBtn = document.querySelector(".equal");
 equalBtn.addEventListener("click", function () {
   total = currentNumber + Number(display.textContent);
-  console.log(total);
 });
 
 // clear button
