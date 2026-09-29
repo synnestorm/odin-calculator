@@ -1,14 +1,18 @@
 const calcDisplay = document.querySelector(".calc-display");
-let displaySum = document.createElement("p");
-displaySum.className = "display-sum";
-displaySum.textContent = "";
-calcDisplay.appendChild(displaySum);
+let display = document.createElement("p");
+display.className = "display";
+display.textContent = "";
+calcDisplay.appendChild(display);
+
+// const displayValue = Number(display.textContent);
+let currentNumber = 0;
+let total = 0;
 
 // number buttons
 const numberBtns = document.querySelectorAll(".number");
 numberBtns.forEach((button) => {
   button.addEventListener("click", function () {
-    displaySum.textContent += button.textContent;
+    display.textContent += button.textContent;
   });
 });
 
@@ -16,12 +20,41 @@ numberBtns.forEach((button) => {
 const operatorBtns = document.querySelectorAll(".operator");
 operatorBtns.forEach((button) => {
   button.addEventListener("click", function () {
-    displaySum.textContent += button.textContent;
+    currentNumber = Number(display.textContent);
+    display.textContent = "";
   });
+});
+
+const equalBtn = document.querySelector(".equal");
+equalBtn.addEventListener("click", function () {
+  total = currentNumber + Number(display.textContent);
+  console.log(total);
 });
 
 // clear button
 const clearBtn = document.querySelector(".clear");
 clearBtn.addEventListener("click", function () {
-  displaySum.textContent = "";
+  display.textContent = "";
 });
+
+// functions for the operators in order: add, subtract, multiply, divide
+
+// im also thinking that, when the button is clicked it should store a value in a variable
+// const value = Number() from the numberBtns???
+
+function add() {
+  const total = displayValue + numberValue;
+  display.textContent = total;
+}
+
+function subtract() {
+  // something like oneValue - anotherValue = total
+}
+
+function multiply() {
+  // something like oneValue * anotherValue = total
+}
+
+function divide() {
+  // something like oneValue / anotherValue = total
+}
