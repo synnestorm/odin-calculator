@@ -25,7 +25,7 @@ main {
   justify-content: center;
 }
 
-.display-sum {
+.display {
   font-family: "CursedTimer";
   color: whitesmoke;
   font-size: 70px;
@@ -62,13 +62,13 @@ main {
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
   justify-items: center;
   align-items: center;
-  gap: 5px;
+  gap: 7px;
   grid-template-areas:
     "ac c prosent divide"
     "seven eight nine multiply"
     "four five six minus"
     "one two three plus"
-    "symbol zero comma equal";
+    "square zero comma equal";
 }
 
 .ac {
@@ -120,8 +120,8 @@ main {
 .plus {
   grid-area: plus;
 }
-.symbol {
-  grid-area: symbol;
+.square {
+  grid-area: square;
 }
 .comma {
   grid-area: comma;
@@ -147,7 +147,8 @@ button {
   cursor: pointer;
 }
 
-.operator {
+.operator,
+.equal {
   background-color: rgb(128, 113, 226);
   box-shadow:
     rgba(0, 0, 0, 0.4) 0px 2px 4px,
