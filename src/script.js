@@ -31,9 +31,14 @@ const equalBtn = document.querySelector(".equal");
 equalBtn.addEventListener("click", function () {
   if (operator === "+") {
     total = currentNumber + Number(display.textContent);
-    console.log(total);
   } else if (operator === "-") {
     total = currentNumber - Number(display.textContent);
+  } else if (operator === "*") {
+    total = currentNumber * Number(display.textContent);
+  } else if (operator === "/") {
+    total = currentNumber / Number(display.textContent);
+  } else {
+    display.textContent = "error";
   }
 });
 
