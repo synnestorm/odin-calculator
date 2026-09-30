@@ -18,7 +18,9 @@ numberBtns.forEach((button) => {
       display.textContent = "";
       calcDone = false;
     }
-    display.textContent += button.textContent;
+    if (display.textContent.length < 10) {
+      display.textContent += button.textContent;
+    }
   });
 });
 
@@ -32,52 +34,73 @@ operatorBtns.forEach((button) => {
   });
 });
 
+// equal button
 const equalBtn = document.querySelector(".equal");
 equalBtn.addEventListener("click", function () {
   if (operator === "+") {
-    total = currentNumber + Number(display.textContent);
-    display.textContent = total;
+    add();
   } else if (operator === "-") {
-    total = currentNumber - Number(display.textContent);
-    display.textContent = total;
+    subtract();
   } else if (operator === "×") {
-    total = currentNumber * Number(display.textContent);
-    display.textContent = total;
+    multiply();
   } else if (operator === "÷") {
-    total = currentNumber / Number(display.textContent);
-    display.textContent = total;
+    divide();
   } else {
     display.textContent = "error";
-    display.style.fontFamily = "Black Ops One";
   }
   calcDone = true;
 });
 
-// clear button
+// clear buttons
 const clearBtn = document.querySelectorAll(".clear");
 clearBtn.forEach((button) => {
   button.addEventListener("click", function () {
     display.textContent = "";
+    currentNumber = 0;
+    total = 0;
+    operator = "";
+    calcDone = false;
   });
 });
-// functions for the operators in order: add, subtract, multiply, divide
 
-// im also thinking that, when the button is clicked it should store a value in a variable
-// const value = Number() from the numberBtns???
-
+// functions
 function add() {
-  const total = displayValue + numberValue;
+  total = currentNumber + Number(display.textContent);
+  if (total.toString().length > 10) {
+    display.textContent = "overflow";
+    return;
+  }
   display.textContent = total;
 }
 
 function subtract() {
-  // something like oneValue - anotherValue = total
+  total = currentNumber - Number(display.textContent);
+  if (total.toString().length > 10) {
+    display.textContent = "overflow";
+    return;
+  }
+  display.textContent = total;
 }
 
 function multiply() {
-  // something like oneValue * anotherValue = total
+  total = currentNumber * Number(display.textContent);
+  if (total.toString().length > 10) {
+    display.textContent = "overflow";
+    return;
+  }
+  display.textContent = total;
 }
 
 function divide() {
-  // something like oneValue / anotherValue = total
+  const secondNumber = Number(display.textContent);
+  if (secondNumber === 0) {
+    display.textContent = "error: no";
+    return;
+  }
+  total = Math.round((currentNumber / secondNumber) * 1000000) / 1000000;
+  if (total.toString().length > 10) {
+    display.textContent = "overflow";
+    return;
+  }
+  display.textContent = total;
 }
