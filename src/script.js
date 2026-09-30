@@ -1,11 +1,13 @@
+// calculator display
 const calcDisplay = document.querySelector(".calc-display");
 let display = document.createElement("p");
 display.className = "display";
 display.textContent = "";
 calcDisplay.appendChild(display);
 
-// const displayValue = Number(display.textContent);
+// variables
 let currentNumber = 0;
+let secondNumber = 0;
 let total = 0;
 let operator = "";
 let calcDone = false;
@@ -92,7 +94,7 @@ function multiply() {
 }
 
 function divide() {
-  const secondNumber = Number(display.textContent);
+  secondNumber = Number(display.textContent);
   if (secondNumber === 0) {
     display.textContent = "error: no";
     return;
@@ -104,3 +106,5 @@ function divide() {
   }
   display.textContent = total;
 }
+
+// operator function will go here
