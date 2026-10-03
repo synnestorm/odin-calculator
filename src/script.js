@@ -30,6 +30,13 @@ numberBtns.forEach((button) => {
 const operatorBtns = document.querySelectorAll(".operator");
 operatorBtns.forEach((button) => {
   button.addEventListener("click", function () {
+    if (calcDone) {
+      firstNumber = total;
+      operator = button.textContent;
+      display.textContent = "";
+      calcDone = false;
+      return;
+    }
     if (operator === "") {
       firstNumber = Number(display.textContent);
       display.textContent = "";
@@ -47,8 +54,12 @@ operatorBtns.forEach((button) => {
 // equal button
 const equalBtn = document.querySelector(".equal");
 equalBtn.addEventListener("click", function () {
+  if (calcDone) {
+    return;
+  }
   secondNumber = Number(display.textContent);
   operate(operator, firstNumber, secondNumber);
+  calcDone = true;
 });
 
 // clear buttons
