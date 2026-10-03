@@ -32,6 +32,7 @@ operatorBtns.forEach((button) => {
   button.addEventListener("click", function () {
     if (operator === "") {
       firstNumber = Number(display.textContent);
+      display.textContent = "";
       operator = button.textContent;
     } else {
       secondNumber = Number(display.textContent);
@@ -63,7 +64,7 @@ clearBtn.forEach((button) => {
 });
 
 // functions
-function add() {
+function add(firstNumber, secondNumber) {
   total = firstNumber + secondNumber;
   if (total.toString().length > 10) {
     display.textContent = "overflow";
@@ -72,7 +73,7 @@ function add() {
   display.textContent = total;
 }
 
-function subtract() {
+function subtract(firstNumber, secondNumber) {
   total = firstNumber - secondNumber;
   if (total.toString().length > 10) {
     display.textContent = "overflow";
@@ -81,7 +82,7 @@ function subtract() {
   display.textContent = total;
 }
 
-function multiply() {
+function multiply(firstNumber, secondNumber) {
   total = firstNumber * secondNumber;
   if (total.toString().length > 10) {
     display.textContent = "overflow";
@@ -90,7 +91,7 @@ function multiply() {
   display.textContent = total;
 }
 
-function divide() {
+function divide(firstNumber, secondNumber) {
   if (secondNumber === 0) {
     display.textContent = "nice try";
     return;
@@ -107,13 +108,13 @@ function divide() {
 
 function operate(operator, firstNumber, secondNumber) {
   if (operator === "+") {
-    add();
+    add(firstNumber, secondNumber);
   } else if (operator === "-") {
-    subtract();
+    subtract(firstNumber, secondNumber);
   } else if (operator === "×") {
-    multiply();
+    multiply(firstNumber, secondNumber);
   } else if (operator === "÷") {
-    divide();
+    divide(firstNumber, secondNumber);
   } else {
     display.textContent = "error";
   }
