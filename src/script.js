@@ -6,7 +6,7 @@ display.textContent = "";
 calcDisplay.appendChild(display);
 
 // variables
-let currentNumber = 0;
+let firstNumber = 0;
 let secondNumber = 0;
 let total = 0;
 let operator = "";
@@ -30,7 +30,7 @@ numberBtns.forEach((button) => {
 const operatorBtns = document.querySelectorAll(".operator");
 operatorBtns.forEach((button) => {
   button.addEventListener("click", function () {
-    currentNumber = Number(display.textContent);
+    firstNumber = Number(display.textContent);
     display.textContent = "";
     operator = button.textContent;
   });
@@ -39,6 +39,66 @@ operatorBtns.forEach((button) => {
 // equal button
 const equalBtn = document.querySelector(".equal");
 equalBtn.addEventListener("click", function () {
+  secondNumber = Number(display.textContent);
+  operate(operator, firstNumber, secondNumber);
+});
+
+// clear buttons
+const clearBtn = document.querySelectorAll(".clear");
+clearBtn.forEach((button) => {
+  button.addEventListener("click", function () {
+    display.textContent = "";
+    firstNumber = 0;
+    total = 0;
+    operator = "";
+    calcDone = false;
+  });
+});
+
+// functions
+function add() {
+  total = firstNumber + secondNumber;
+  if (total.toString().length > 10) {
+    display.textContent = "overflow";
+    return;
+  }
+  display.textContent = total;
+}
+
+function subtract() {
+  total = firstNumber - secondNumber;
+  if (total.toString().length > 10) {
+    display.textContent = "overflow";
+    return;
+  }
+  display.textContent = total;
+}
+
+function multiply() {
+  total = firstNumber * secondNumber;
+  if (total.toString().length > 10) {
+    display.textContent = "overflow";
+    return;
+  }
+  display.textContent = total;
+}
+
+function divide() {
+  if (secondNumber === 0) {
+    display.textContent = "nice try";
+    return;
+  }
+  total = Math.round((firstNumber / secondNumber) * 1000000) / 1000000;
+  if (total.toString().length > 10) {
+    display.textContent = "overflow";
+    return;
+  }
+  display.textContent = total;
+}
+
+// operator function will go here
+
+function operate(operator, firstNumber, secondNumber) {
   if (operator === "+") {
     add();
   } else if (operator === "-") {
@@ -50,61 +110,4 @@ equalBtn.addEventListener("click", function () {
   } else {
     display.textContent = "error";
   }
-  calcDone = true;
-});
-
-// clear buttons
-const clearBtn = document.querySelectorAll(".clear");
-clearBtn.forEach((button) => {
-  button.addEventListener("click", function () {
-    display.textContent = "";
-    currentNumber = 0;
-    total = 0;
-    operator = "";
-    calcDone = false;
-  });
-});
-
-// functions
-function add() {
-  total = currentNumber + Number(display.textContent);
-  if (total.toString().length > 10) {
-    display.textContent = "overflow";
-    return;
-  }
-  display.textContent = total;
 }
-
-function subtract() {
-  total = currentNumber - Number(display.textContent);
-  if (total.toString().length > 10) {
-    display.textContent = "overflow";
-    return;
-  }
-  display.textContent = total;
-}
-
-function multiply() {
-  total = currentNumber * Number(display.textContent);
-  if (total.toString().length > 10) {
-    display.textContent = "overflow";
-    return;
-  }
-  display.textContent = total;
-}
-
-function divide() {
-  secondNumber = Number(display.textContent);
-  if (secondNumber === 0) {
-    display.textContent = "error: no";
-    return;
-  }
-  total = Math.round((currentNumber / secondNumber) * 1000000) / 1000000;
-  if (total.toString().length > 10) {
-    display.textContent = "overflow";
-    return;
-  }
-  display.textContent = total;
-}
-
-// operator function will go here
