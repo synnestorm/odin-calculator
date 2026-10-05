@@ -64,11 +64,11 @@ main {
   align-items: center;
   gap: 7px;
   grid-template-areas:
-    "ac c prosent divide"
+    "ac c comma divide"
     "seven eight nine multiply"
     "four five six minus"
     "one two three plus"
-    "square zero comma equal";
+    ". zero . equal";
 }
 
 .ac {
@@ -77,9 +77,6 @@ main {
 
 .c {
   grid-area: c;
-}
-.prosent {
-  grid-area: prosent;
 }
 .divide {
   grid-area: divide;
@@ -120,14 +117,14 @@ main {
 .plus {
   grid-area: plus;
 }
-.square {
-  grid-area: square;
-}
 .comma {
   grid-area: comma;
 }
 .equal {
   grid-area: equal;
+}
+.zero {
+  grid-area: zero;
 }
 
 .calc-operators {
