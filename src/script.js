@@ -18,6 +18,9 @@ numberBtns.forEach((button) => {
   button.addEventListener("click", function () {
     if (calcDone) {
       display.textContent = "";
+      firstNumber = 0;
+      secondNumber = 0;
+      operator = "";
       calcDone = false;
     }
     if (display.textContent.length < 10) {
