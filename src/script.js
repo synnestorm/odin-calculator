@@ -68,13 +68,14 @@ clearBtn.forEach((button) => {
   button.addEventListener("click", function () {
     display.textContent = "";
     firstNumber = 0;
+    secondNumber = 0;
     total = 0;
     operator = "";
     calcDone = false;
   });
 });
 
-// functions
+// arithmetic functions
 function add(firstNumber, secondNumber) {
   total = firstNumber + secondNumber;
   if (total.toString().length > 10) {
