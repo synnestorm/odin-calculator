@@ -109,6 +109,7 @@ function multiply(firstNumber, secondNumber) {
 function divide(firstNumber, secondNumber) {
   if (secondNumber === 0) {
     display.textContent = "nice try";
+    total = 0;
     return;
   }
   total = Math.round((firstNumber / secondNumber) * 1000000) / 1000000;
